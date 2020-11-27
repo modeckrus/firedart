@@ -2,6 +2,8 @@ import 'dart:io';
 
 import 'package:firedart/firedart.dart';
 
+import '../lib/firedart.dart';
+
 const apiKey = 'Project Settings -> General -> Web API Key';
 const projectId = 'Project Settings -> General -> Project ID';
 const email = 'you@server.com';
@@ -24,6 +26,7 @@ Future main() async {
 
   // Instantiate a reference to a document - this happens offline
   var ref = Firestore.instance.collection('test').document('doc');
+  // (await FirebaseStorage.getBucket(projectId, 'bucketId', auth)).
 
   // Subscribe to changes to that document
   ref.stream.listen((document) => print('updated: $document'));

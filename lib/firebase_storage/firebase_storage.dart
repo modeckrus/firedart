@@ -18,11 +18,13 @@ class FirebaseStorage {
     assert(bucketId.isNotEmpty, 'Bucket ID cannot be null');
     assert(auth != null, 'Auth cannot be null');
 
-    var credentials = gauth.ServiceAccountCredentials.fromJson(
-        auth.serviceAccount.serviceAccountString);
-    var client = await gauth.clientViaServiceAccount(
-        credentials, Storage.SCOPES,
-        baseClient: auth.httpClient);
+    // var credentials = gauth.ServiceAccountCredentials.fromJson(
+    //     auth.serviceAccount.serviceAccountString);
+    // var client = await gauth.clientViaServiceAccount(
+    //     credentials, Storage.SCOPES,
+    //     baseClient: auth.httpClient);
+    var client =
+        await gauth.clientViaApiKey(auth.apiKey, baseClient: auth.httpClient);
     var storage = Storage(client, projectId);
     var bucket = await storage.bucket(bucketId);
 
